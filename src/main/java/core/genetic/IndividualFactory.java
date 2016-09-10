@@ -1,11 +1,11 @@
-package main.core.genetic;
+package main.java.core.genetic;
 
 import java.lang.reflect.Field;
 
-import main.core.definitions.Chromosome;
-import main.core.definitions.Individual;
-import main.core.definitions.Traversable;
-import main.shell.util.Rand;
+import main.java.core.definitions.Chromosome;
+import main.java.core.definitions.Individual;
+import main.java.core.definitions.Traversable;
+import main.java.shell.util.Rand;
 
 public class IndividualFactory {
 

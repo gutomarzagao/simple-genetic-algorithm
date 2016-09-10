@@ -1,4 +1,4 @@
-package test.util;
+package test.java.util;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.powermock.reflect.Whitebox;
 
-import main.shell.util.Rand;
+import main.java.shell.util.Rand;
 
 public class RandTest {
 
