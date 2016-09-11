@@ -1,4 +1,4 @@
-package main.java.shell.util;
+package shell.util;
 
 import java.util.Random;
 

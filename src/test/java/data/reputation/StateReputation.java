@@ -1,6 +1,6 @@
-package test.java.data.reputation;
+package data.reputation;
 
-import main.java.core.definitions.Chromosome;
+import core.definitions.Chromosome;
 
 public class StateReputation implements Chromosome {
 

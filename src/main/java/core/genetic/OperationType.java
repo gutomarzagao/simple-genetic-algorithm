@@ -1,4 +1,4 @@
-package main.java.core.genetic;
+package core.genetic;
 
 public enum OperationType {
 	CROSSBREED, MUTATE, RANDOM

@@ -1,6 +1,6 @@
-package test.java.data.reputation;
+package data.reputation;
 
-import main.java.core.definitions.Individual;
+import core.definitions.Individual;
 
 public class CityReputation implements Individual {
 

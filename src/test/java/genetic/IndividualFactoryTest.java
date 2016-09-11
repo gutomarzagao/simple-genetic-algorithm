@@ -1,4 +1,4 @@
-package test.java.genetic;
+package genetic;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,12 +7,12 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import main.java.core.definitions.Individual;
-import main.java.core.genetic.IndividualFactory;
-import main.java.shell.util.Rand;
-import test.java.data.UnknownGeneType;
-import test.java.data.privateproperty.PrivateChromosome;
-import test.java.data.reputation.CityReputation;
+import core.definitions.Individual;
+import core.genetic.IndividualFactory;
+import data.UnknownGeneType;
+import data.privateproperty.PrivateChromosome;
+import data.reputation.CityReputation;
+import shell.util.Rand;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Rand.class)

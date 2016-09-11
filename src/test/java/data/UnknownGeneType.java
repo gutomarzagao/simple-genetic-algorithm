@@ -1,6 +1,6 @@
-package test.java.data;
+package data;
 
-import main.java.core.definitions.Individual;
+import core.definitions.Individual;
 
 public class UnknownGeneType implements Individual {
 

@@ -1,6 +1,6 @@
-package test.java.data.privateproperty;
+package data.privateproperty;
 
-import main.java.core.definitions.Individual;
+import core.definitions.Individual;
 
 public class PrivateChromosome implements Individual {
 

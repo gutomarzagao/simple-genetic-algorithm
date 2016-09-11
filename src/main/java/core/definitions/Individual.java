@@ -1,4 +1,4 @@
-package main.java.core.definitions;
+package core.definitions;
 
 public interface Individual extends Traversable {
 
