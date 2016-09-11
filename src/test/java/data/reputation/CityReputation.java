@@ -9,8 +9,8 @@ public class CityReputation implements Individual {
 	public StateReputation state;
 
 	@Override
-	public Double fitness() {
-		return null;
+	public int compareTo(Individual o) {
+		return 0;
 	}
 
 }

@@ -1,6 +1,7 @@
 package core.genetic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import core.definitions.Individual;
@@ -15,7 +16,7 @@ public class GeneticAlgorithm {
 
 		for (int curGeneration = 0; curGeneration < params.getGenerations(); curGeneration++) {
 			List<T> nextGeneration = new ArrayList<>();
-			population.sort((i1, i2) -> i1.fitness().compareTo(i2.fitness()));
+			Collections.sort(population, Collections.reverseOrder());
 
 			addEliteIndividuals(population, nextGeneration, params);
 			addCrossingIndividuals(population, nextGeneration, params);

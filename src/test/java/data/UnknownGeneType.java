@@ -7,8 +7,8 @@ public class UnknownGeneType implements Individual {
 	public boolean unknownType;
 
 	@Override
-	public Double fitness() {
-		return null;
+	public int compareTo(Individual o) {
+		return 0;
 	}
 
 }
