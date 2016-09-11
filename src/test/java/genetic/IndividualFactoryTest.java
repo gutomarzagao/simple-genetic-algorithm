@@ -9,6 +9,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import core.genetic.IndividualFactory;
 import data.UnknownGeneType;
+import data.gene.GeneLimits;
 import data.privateproperty.PrivateChromosome;
 import data.reputation.CityReputation;
 import shell.util.Rand;
@@ -30,6 +31,21 @@ public class IndividualFactoryTest {
 		Assert.assertEquals(35, cityReputation.reputation);
 		Assert.assertEquals(25, cityReputation.state.reputation);
 		Assert.assertEquals(15, cityReputation.state.country.reputation);
+	}
+
+	@Test
+	public void randomIntegerShouldRespectGeneLimits() throws InstantiationException, IllegalAccessException {
+		// Arrange
+		PowerMockito.mockStatic(Rand.class);
+		PowerMockito.when(Rand.getInt(33, 77)).thenReturn(33);
+		PowerMockito.when(Rand.getInt(64, 92)).thenReturn(92);
+
+		// Act
+		GeneLimits geneLimits = IndividualFactory.createRandom(GeneLimits.class);
+
+		// Assert
+		Assert.assertEquals(33, geneLimits.minValue);
+		Assert.assertEquals(92, geneLimits.maxValue);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

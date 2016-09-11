@@ -3,6 +3,7 @@ package core.genetic;
 import java.lang.reflect.Field;
 
 import core.definitions.Chromosome;
+import core.definitions.GeneInteger;
 import core.definitions.Individual;
 import core.definitions.Traversable;
 import shell.util.Rand;
@@ -82,6 +83,12 @@ public class IndividualFactory {
 		if (fieldType.equals(int.class)) {
 			int minValue = 0;
 			int maxValue = Integer.MAX_VALUE - 1;
+
+			if (field.isAnnotationPresent(GeneInteger.class)) {
+				GeneInteger geneInteger = field.getDeclaredAnnotation(GeneInteger.class);
+				minValue = geneInteger.minValue();
+				maxValue = geneInteger.maxValue();
+			}
 
 			return Rand.getInt(minValue, maxValue);
 		} else {
