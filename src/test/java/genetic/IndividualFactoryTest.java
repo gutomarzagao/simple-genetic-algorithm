@@ -8,6 +8,8 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import core.genetic.IndividualFactory;
+import data.DataTypesSupported;
+import data.DataTypesSupported.Enum;
 import data.UnknownGeneType;
 import data.gene.GeneLimits;
 import data.privateproperty.PrivateChromosome;
@@ -17,6 +19,21 @@ import shell.util.Rand;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Rand.class)
 public class IndividualFactoryTest {
+
+	@Test
+	public void supportedDataTypes() throws InstantiationException, IllegalAccessException {
+		// Arrange
+		PowerMockito.mockStatic(Rand.class);
+		PowerMockito.when(Rand.getInt(0, Integer.MAX_VALUE - 1)).thenReturn(43);
+		PowerMockito.when(Rand.getInt(0, 2)).thenReturn(2);
+
+		// Act
+		DataTypesSupported supportedDataTypes = IndividualFactory.createRandom(DataTypesSupported.class);
+
+		// Assert
+		Assert.assertEquals(43, supportedDataTypes.integer);
+		Assert.assertEquals(Enum.C, supportedDataTypes.enumeration);
+	}
 
 	@Test
 	public void createRandomIndividual() throws InstantiationException, IllegalAccessException {

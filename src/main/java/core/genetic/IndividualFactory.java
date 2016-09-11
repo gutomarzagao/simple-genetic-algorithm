@@ -10,8 +10,8 @@ import shell.util.Rand;
 
 public class IndividualFactory {
 
-	public static <T extends Individual<T>> T crossbreed(Class<T> individual, Individual<T> parent1, Individual<T> parent2)
-			throws InstantiationException, IllegalAccessException {
+	public static <T extends Individual<T>> T crossbreed(Class<T> individual, Individual<T> parent1,
+			Individual<T> parent2) throws InstantiationException, IllegalAccessException {
 		return traverse(individual, OperationType.CROSSBREED, parent1, parent2);
 	}
 
@@ -91,6 +91,11 @@ public class IndividualFactory {
 			}
 
 			return Rand.getInt(minValue, maxValue);
+		} else if (fieldType.isEnum()) {
+			Object[] enumConstants = fieldType.getEnumConstants();
+			int value = Rand.getInt(0, enumConstants.length - 1);
+
+			return enumConstants[value];
 		} else {
 			throw new IllegalArgumentException(String.format("Cannot create a value for the type %s", fieldType));
 		}
