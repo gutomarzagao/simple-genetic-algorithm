@@ -1,15 +1,47 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>simple-genetic-algorithm</groupId>
+	<groupId>brainstorm</groupId>
 	<artifactId>simple-genetic-algorithm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Simple Genetic Algorithm</name>
+	<description>A Java library designed to run a genetic algorithm with the least possible effort. Almost no setup is required in order to consume this library.</description>
+	<url>https://github.com/gutomarzagao/simple-genetic-algorithm</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Guto Marzagão</name>
+			<email>gutomarzagao@gmail.com</email>
+		</developer>
+		<developer>
+			<name>Fabio Beider</name>
+			<email>fabeider@gmail.com</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>git@github.com:gutomarzagao/simple-genetic-algorithm.git</connection>
+		<developerConnection>git@github.com:gutomarzagao/simple-genetic-algorithm.git</developerConnection>
+		<url>https://github.com/gutomarzagao/simple-genetic-algorithm</url>
+	</scm>
+
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
+
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -17,9 +49,11 @@
 			</plugin>
 		</plugins>
 	</build>
+
 	<properties>
 		<powermock.version>1.6.5</powermock.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -27,12 +61,14 @@
 			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
 			<version>${powermock.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito2</artifactId>
@@ -40,4 +76,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 </project>
