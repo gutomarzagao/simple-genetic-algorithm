@@ -9,16 +9,19 @@ import shell.util.Rand;
 
 public class IndividualFactory {
 
-	public static <T extends Individual> T createRandom(Class<T> individual)
+	public static <T extends Individual> T crossbreed(Class<T> individual, Individual parent1, Individual parent2)
 			throws InstantiationException, IllegalAccessException {
-		validateClass(individual);
-		return traverse(individual, OperationType.RANDOM);
+		return traverse(individual, OperationType.CROSSBREED, parent1, parent2);
 	}
 
-	private static <T extends Individual> void validateClass(Class<T> individual) {
-		if (individual.equals(Individual.class)) {
-			throw new IllegalArgumentException(String.format("Invalid class type: %s", individual.getName()));
-		}
+	public static <T extends Individual> T mutate(Class<T> individual, Individual mutant)
+			throws InstantiationException, IllegalAccessException {
+		return traverse(individual, OperationType.MUTATE, mutant);
+	}
+
+	public static <T extends Individual> T createRandom(Class<T> individual)
+			throws InstantiationException, IllegalAccessException {
+		return traverse(individual, OperationType.RANDOM);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -9,7 +9,7 @@ import org.powermock.reflect.Whitebox;
 
 import shell.util.Rand;
 
-public class RandTest {
+public class RandIntegerTest {
 
 	@Test
 	public void lowestInteger() {
@@ -69,30 +69,6 @@ public class RandTest {
 	public void maximumIntegerRange() {
 		// Act
 		Rand.getInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
-	}
-
-	@Test
-	public void booleanTrue() {
-		// Act & Assert
-		Assert.assertEquals(true, Rand.getBoolean(1));
-	}
-
-	@Test
-	public void booleanFalse() {
-		// Act & Assert
-		Assert.assertEquals(false, Rand.getBoolean(0));
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void probabilityCannotBeLessThanZero() {
-		// Act
-		Rand.getBoolean(-0.01);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void probabilityCannotBeGreaterThanOne() {
-		// Act
-		Rand.getBoolean(1.01);
 	}
 
 }

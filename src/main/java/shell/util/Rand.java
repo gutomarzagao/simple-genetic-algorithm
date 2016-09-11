@@ -1,5 +1,6 @@
 package shell.util;
 
+import java.util.List;
 import java.util.Random;
 
 public class Rand {
@@ -24,6 +25,10 @@ public class Rand {
 		}
 
 		return random.nextInt(upperValue - lowerValue + 1) + lowerValue;
+	}
+
+	public static <T> T getListElement(List<T> list) {
+		return list.get(random.nextInt(list.size()));
 	}
 
 }

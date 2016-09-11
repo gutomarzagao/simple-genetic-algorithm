@@ -7,7 +7,6 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import core.definitions.Individual;
 import core.genetic.IndividualFactory;
 import data.UnknownGeneType;
 import data.privateproperty.PrivateChromosome;
@@ -50,12 +49,6 @@ public class IndividualFactoryTest {
 
 		// Assert
 		Assert.assertEquals(50, privateChromosome.getChromosome().getProperty());
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void throwExceptionForIndividualClass() throws InstantiationException, IllegalAccessException {
-		// Act
-		IndividualFactory.createRandom(Individual.class);
 	}
 
 }
