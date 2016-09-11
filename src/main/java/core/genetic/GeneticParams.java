@@ -2,7 +2,7 @@ package core.genetic;
 
 import core.definitions.Individual;
 
-public class GeneticParams<T extends Individual> {
+public class GeneticParams<T extends Individual<T>> {
 
 	private Class<T> individual;
 	private int eliteSize = 50;
@@ -15,7 +15,7 @@ public class GeneticParams<T extends Individual> {
 		this.individual = individual;
 	}
 
-	private static <T extends Individual> void validateClass(Class<T> individual) {
+	private static <T extends Individual<T>> void validateClass(Class<T> individual) {
 		if (individual.equals(Individual.class)) {
 			throw new IllegalArgumentException(String.format("Invalid class type: %s", individual.getName()));
 		}

@@ -1,5 +1,5 @@
 package core.definitions;
 
-public interface Individual extends Traversable, Comparable<Individual> {
+public interface Individual<T> extends Traversable, Comparable<T> {
 
 }

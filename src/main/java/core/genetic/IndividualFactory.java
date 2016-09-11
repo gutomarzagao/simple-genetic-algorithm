@@ -10,17 +10,17 @@ import shell.util.Rand;
 
 public class IndividualFactory {
 
-	public static <T extends Individual> T crossbreed(Class<T> individual, Individual parent1, Individual parent2)
+	public static <T extends Individual<T>> T crossbreed(Class<T> individual, Individual<T> parent1, Individual<T> parent2)
 			throws InstantiationException, IllegalAccessException {
 		return traverse(individual, OperationType.CROSSBREED, parent1, parent2);
 	}
 
-	public static <T extends Individual> T mutate(Class<T> individual, Individual mutant)
+	public static <T extends Individual<T>> T mutate(Class<T> individual, Individual<T> mutant)
 			throws InstantiationException, IllegalAccessException {
 		return traverse(individual, OperationType.MUTATE, mutant);
 	}
 
-	public static <T extends Individual> T createRandom(Class<T> individual)
+	public static <T extends Individual<T>> T createRandom(Class<T> individual)
 			throws InstantiationException, IllegalAccessException {
 		return traverse(individual, OperationType.RANDOM);
 	}
