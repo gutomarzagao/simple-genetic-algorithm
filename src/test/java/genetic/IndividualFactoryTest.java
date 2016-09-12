@@ -1,5 +1,7 @@
 package genetic;
 
+import java.math.BigDecimal;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +13,7 @@ import core.genetic.IndividualFactory;
 import data.DataTypesSupported;
 import data.DataTypesSupported.Enum;
 import data.UnknownGeneType;
+import data.customtype.CustomIndividual;
 import data.gene.GeneLimits;
 import data.privateproperty.PrivateChromosome;
 import data.reputation.CityReputation;
@@ -33,6 +36,20 @@ public class IndividualFactoryTest {
 		// Assert
 		Assert.assertEquals(43, supportedDataTypes.integer);
 		Assert.assertEquals(Enum.C, supportedDataTypes.enumeration);
+	}
+	
+	@Test
+	public void customDataTypes() throws InstantiationException, IllegalAccessException {
+		// Arrange
+		PowerMockito.mockStatic(Rand.class);
+		PowerMockito.when(Rand.getInt(0, Integer.MAX_VALUE - 1)).thenReturn(43);
+		PowerMockito.when(Rand.getInt(0, 2)).thenReturn(2);
+
+		// Act
+		CustomIndividual customDataTypes = IndividualFactory.createRandom(CustomIndividual.class);
+
+		// Assert
+		Assert.assertEquals(new BigDecimal(11), customDataTypes.customType);
 	}
 
 	@Test

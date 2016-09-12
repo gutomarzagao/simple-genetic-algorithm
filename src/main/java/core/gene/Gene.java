@@ -1,16 +1,18 @@
-package core.definitions;
+package core.gene;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import core.attributes.ArgInteger;
+
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface GeneInteger {
+public @interface Gene {
 
-	public int minValue();
+	public Class<? extends GeneFactory<?>> factory();
 
-	public int maxValue();
+	public ArgInteger[] argsInteger() default {};
 
 }

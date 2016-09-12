@@ -1,11 +1,15 @@
 package core.genetic;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 
+import core.attributes.ArgInteger;
 import core.definitions.Chromosome;
-import core.definitions.GeneInteger;
 import core.definitions.Individual;
 import core.definitions.Traversable;
+import core.gene.Gene;
+import core.gene.GeneFactory;
+import core.gene.GeneInteger;
 import shell.util.Rand;
 
 public class IndividualFactory {
@@ -73,14 +77,26 @@ public class IndividualFactory {
 		throw new IllegalArgumentException("Not implemented");
 	}
 
-	private static Object random(Field field, Object... args) {
+	private static Object random(Field field, Object... args) throws InstantiationException, IllegalAccessException {
 		if (args.length != 0) {
 			throw new IllegalArgumentException("No arguments are allowed for this operation");
 		}
 
 		Class<?> fieldType = field.getType();
 
-		if (fieldType.equals(int.class)) {
+		if (field.isAnnotationPresent(Gene.class)) {
+			Gene gene = field.getDeclaredAnnotation(Gene.class);
+			Class<? extends GeneFactory<?>> factoryClass = gene.factory();
+
+			HashMap<String, Integer> geneArgs = new HashMap<>();
+			ArgInteger[] argsInteger = gene.argsInteger();
+			for (ArgInteger argInteger : argsInteger) {
+				geneArgs.put(argInteger.name(), argInteger.value());
+			}
+
+			GeneFactory<?> factory = factoryClass.newInstance();
+			return factory.create(geneArgs);
+		} else if (fieldType.equals(int.class)) {
 			int minValue = 0;
 			int maxValue = Integer.MAX_VALUE - 1;
 

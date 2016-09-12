@@ -1,7 +1,7 @@
 package data.gene;
 
-import core.definitions.GeneInteger;
 import core.definitions.Individual;
+import core.gene.GeneInteger;
 
 public class GeneLimits implements Individual<GeneLimits> {
 
