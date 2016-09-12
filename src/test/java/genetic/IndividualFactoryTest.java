@@ -11,10 +11,11 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import core.genetic.IndividualFactory;
 import data.DataTypesSupported;
-import data.DataTypesSupported.Enum;
+import data.EnumType;
 import data.UnknownGeneType;
 import data.customtype.CustomIndividual;
 import data.gene.GeneLimits;
+import data.nullable.NullableIndividual;
 import data.privateproperty.PrivateChromosome;
 import data.reputation.CityReputation;
 import shell.util.Rand;
@@ -35,9 +36,9 @@ public class IndividualFactoryTest {
 
 		// Assert
 		Assert.assertEquals(43, supportedDataTypes.integer);
-		Assert.assertEquals(Enum.C, supportedDataTypes.enumeration);
+		Assert.assertEquals(EnumType.C, supportedDataTypes.enumeration);
 	}
-	
+
 	@Test
 	public void customDataTypes() throws InstantiationException, IllegalAccessException {
 		// Arrange
@@ -99,6 +100,32 @@ public class IndividualFactoryTest {
 
 		// Assert
 		Assert.assertEquals(50, privateChromosome.getChromosome().getProperty());
+	}
+
+	@Test
+	public void nullableChromosome() throws InstantiationException, IllegalAccessException {
+		// Arrange
+		PowerMockito.mockStatic(Rand.class);
+		PowerMockito.when(Rand.getBoolean()).thenReturn(true);
+
+		// Act
+		NullableIndividual individual = IndividualFactory.createRandom(NullableIndividual.class);
+
+		// Assert
+		Assert.assertEquals(null, individual.chromosome);
+	}
+
+	@Test
+	public void nullableType() throws InstantiationException, IllegalAccessException {
+		// Arrange
+		PowerMockito.mockStatic(Rand.class);
+		PowerMockito.when(Rand.getBoolean()).thenReturn(false).thenReturn(true);
+
+		// Act
+		NullableIndividual individual = IndividualFactory.createRandom(NullableIndividual.class);
+
+		// Assert
+		Assert.assertEquals(null, individual.chromosome.nullableType);
 	}
 
 }

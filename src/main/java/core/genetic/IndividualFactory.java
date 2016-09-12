@@ -10,6 +10,7 @@ import core.definitions.Traversable;
 import core.gene.Gene;
 import core.gene.GeneFactory;
 import core.gene.GeneInteger;
+import core.gene.GeneNullable;
 import shell.util.Rand;
 
 public class IndividualFactory {
@@ -38,7 +39,10 @@ public class IndividualFactory {
 		for (Field field : fields) {
 			Class<?> fieldType = field.getType();
 
-			if (Chromosome.class.isAssignableFrom(fieldType)) {
+			if (field.isAnnotationPresent(GeneNullable.class) && Rand.getBoolean()) {
+				field.setAccessible(true);
+				field.set(instance, null);
+			} else if (Chromosome.class.isAssignableFrom(fieldType)) {
 				Chromosome chromosome = traverse((Class<? extends Chromosome>) fieldType, operation, args);
 				field.setAccessible(true);
 				field.set(instance, chromosome);
